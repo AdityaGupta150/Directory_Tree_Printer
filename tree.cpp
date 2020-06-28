@@ -24,7 +24,7 @@ void read_dirs(int argc, char ** argv, Tree &tree)
 		unsigned int n_tokens = 0;
 		// Count tokens
 		vector<string> string_tokens;
-		for (Token::iterator it = tokens.begin(); it != tokens.end(); it++)
+		for (Token::iterator it = tokens.begin(); it != tokens.end(); ++it)
 		{
 			string_tokens.push_back(*it);
 			n_tokens ++;
