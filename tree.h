@@ -1,10 +1,7 @@
-#ifndef TREE_H
-#define TREE_H
+#pragma once
 
 #include <string>
 #include <vector>
-
-using namespace std;
 
 // The algorithm might be asymptotically slow, which could be as worse as O(n^3), because I did not implement the tree using pointers.
 // However, in practice, it should be sufficient since the user will only print the directory tree that is not too large.
@@ -12,21 +9,17 @@ using namespace std;
 
 struct TreeNode
 {
-	string name;
+	std::string name;
 	int depth;
-	vector<string> nodelabel;
+	std::vector<std::string> nodelabel;
 };
 
 struct Tree
 {
 	// 1D treenodes
-	vector<TreeNode> treenodes;
+	std::vector<TreeNode> treenodes;
 	void print_tree_simple() const;
 	void print_tree();
 };
 
-
-void read_dirs(int argc, char ** argv, Tree &tree);
-
-
-#endif
+void read_dirs(const std::vector<std::string>& files, Tree &tree, const std::string& root);

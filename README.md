@@ -1,16 +1,12 @@
 # Directory Tree Printer
 
-Author: Lei Mao
-
-Date: 1/14/2018
+Author: Lei Mao (Original Repo) & Aditya Gupta (This Repo)
 
 ## Introduction
 
 Printing directory tree is useful to present the direcotry architectures. Such directory trees could often be used in GitHub projects.
 
-## Dependencies
-
-[Boost C++ Library](http://www.boost.org/)
+Apart from the original one, it now supports .gitignore files too, ie. it will skip the .git directory and other entries in your .gitignore 🎉🎉, also it doesn't have a dependency on boost library now.
 
 ## Demo
 
@@ -35,8 +31,8 @@ This is the directory tree of the "Directory Tree Printer" folder.
 │               ├── file2.txt
 │               └── folder_2
 ├── tree_print.cpp
-├── Makefile
-├── demo
+├── CMakeLists.txt
+├── demo.txt
 ├── README.md
 ├── tree.h
 └── tree.cpp
@@ -44,28 +40,27 @@ This is the directory tree of the "Directory Tree Printer" folder.
 
 ## Usage
 
-The executable file "tree_print" has been compiled on Ubuntu 16.04 using g++ 5.4.0. Ubuntu users should be able to use the program directly.
-
 ```shell
-find . | xargs ./tree_print
-find . | xargs ./tree_print > demo.txt
+./dtree .
+./dtree DIRECTORY_NAME_OR_PATH
 ```
 
+## Building
+----
 To compile the from the source code, simply run:
-
 ```shell
-make
+mkdir build && cd build
+cmake ..
+cmake --build .
 ```
 
-## Caveats
-
-The name of folder and files should not have blanks. Because the program relies on the output from ```find``` command from Linux shell, and ```find``` could not correctly parsing the directory list to the C++ program arguments, there will be problems to present the directory structure containing blanks in the path. This might be fixed in the future if I have time.
+You will get a `dtree` executable then.
 
 ## Notes
+* You need a compiler supporting C++17
+* Linux has similar packages to present directory tree,
 
-Linux has similar packages to present directory tree.
-
-On Ubuntu:
-```shell
-sudo apt install tree
-```
+    On Ubuntu:
+    ```shell
+    sudo apt install tree
+    ```
